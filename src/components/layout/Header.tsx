@@ -14,17 +14,17 @@ export function Header({ page, setPage, role, onSignIn, onSignOut }: HeaderProps
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-lg bg-background/80 border-b border-border shadow-soft">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center gap-4 justify-between">
-        <div className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-primary text-primary-foreground font-bold text-lg shadow-glow">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-3 min-w-0 flex-1">
+          <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-gradient-primary text-primary-foreground font-bold text-base sm:text-lg shadow-glow flex-shrink-0">
             AS
           </div>
-          <div>
-            <div className="font-bold text-lg leading-tight text-foreground">
+          <div className="min-w-0 flex-1">
+            <div className="font-bold text-sm sm:text-lg leading-tight text-foreground truncate">
               Applied Statistics (STAT102)
             </div>
-            <div className="text-sm text-muted-foreground leading-tight">
-              Program Core • 4 Credits • Version 1.0
+            <div className="text-xs sm:text-sm text-muted-foreground leading-tight">
+              Program Core • 4 Credits
             </div>
           </div>
         </div>
@@ -50,16 +50,16 @@ export function Header({ page, setPage, role, onSignIn, onSignOut }: HeaderProps
           </AcademicButton>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-shrink-0">
           <span className={isStaff ? "academic-badge-role" : "academic-badge-type"}>
             {role}
           </span>
           {role === "Student" ? (
-            <AcademicButton variant="secondary" onClick={onSignIn}>
+            <AcademicButton variant="secondary" onClick={onSignIn} className="text-xs sm:text-sm px-2 sm:px-3 py-1.5">
               Sign in
             </AcademicButton>
           ) : (
-            <AcademicButton variant="secondary" onClick={onSignOut}>
+            <AcademicButton variant="secondary" onClick={onSignOut} className="text-xs sm:text-sm px-2 sm:px-3 py-1.5">
               Sign out
             </AcademicButton>
           )}
@@ -67,25 +67,25 @@ export function Header({ page, setPage, role, onSignIn, onSignOut }: HeaderProps
       </div>
 
       {/* Mobile Navigation */}
-      <div className="sm:hidden px-4 pb-4 flex gap-2">
+      <div className="sm:hidden px-4 pb-3 flex gap-1.5">
         <AcademicButton
           variant={page === "home" ? "nav-active" : "nav-inactive"}
           onClick={() => setPage("home")}
-          className="flex-1"
+          className="flex-1 text-xs px-2 py-2"
         >
           Announcements
         </AcademicButton>
         <AcademicButton
           variant={page === "content" ? "nav-active" : "nav-inactive"}
           onClick={() => setPage("content")}
-          className="flex-1"
+          className="flex-1 text-xs px-2 py-2"
         >
           Content
         </AcademicButton>
         <AcademicButton
           variant={page === "details" ? "nav-active" : "nav-inactive"}
           onClick={() => setPage("details")}
-          className="flex-1"
+          className="flex-1 text-xs px-2 py-2"
         >
           Details
         </AcademicButton>

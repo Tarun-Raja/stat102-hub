@@ -24,11 +24,11 @@ export function LoginModal({ onClose, onSuccess }: LoginModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black/40 backdrop-blur-sm grid place-items-center p-4 z-50">
-      <div className="w-full max-w-md rounded-2xl academic-card p-6 shadow-strong">
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-bold text-foreground">Staff Sign In</h3>
+      <div className="w-full max-w-sm sm:max-w-md rounded-2xl academic-card p-4 sm:p-6 shadow-strong mx-4">
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
+          <h3 className="text-lg sm:text-xl font-bold text-foreground">Staff Sign In</h3>
           <button
-            className="text-muted-foreground hover:text-foreground transition-colors w-8 h-8 rounded-lg hover:bg-muted flex items-center justify-center"
+            className="text-muted-foreground hover:text-foreground transition-colors w-8 h-8 rounded-lg hover:bg-muted flex items-center justify-center flex-shrink-0"
             onClick={onClose}
           >
             ✕
@@ -70,16 +70,16 @@ export function LoginModal({ onClose, onSuccess }: LoginModalProps) {
             </div>
           )}
 
-          <div className="flex gap-3 pt-2">
-            <AcademicButton type="submit" className="flex-1">
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <AcademicButton type="submit" className="flex-1 w-full sm:w-auto">
               Sign in
             </AcademicButton>
-            <AcademicButton variant="secondary" type="button" onClick={onClose}>
+            <AcademicButton variant="secondary" type="button" onClick={onClose} className="w-full sm:w-auto">
               Cancel
             </AcademicButton>
           </div>
 
-          <p className="text-xs text-muted-foreground text-center pt-2 border-t border-border">
+          <p className="text-xs text-muted-foreground text-center pt-2 border-t border-border leading-relaxed">
             For classroom use only. Use unique passcodes and rotate if compromised.
           </p>
         </form>

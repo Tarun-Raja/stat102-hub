@@ -35,19 +35,19 @@ export function AnnouncementsPage({
   }, [announcements]);
 
   return (
-    <section className="pt-8">
-      <div className="flex items-end justify-between gap-4 mb-8">
-        <h1 className="text-3xl font-bold text-foreground">Announcements</h1>
+    <section className="pt-6 sm:pt-8">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Announcements</h1>
         <TimestampPill />
       </div>
 
       {canPost && (
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <AnnouncementForm onSubmit={onAddAnnouncement} />
         </div>
       )}
 
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {sortedAnnouncements.length === 0 && (
           <EmptyState
             title="No announcements yet"

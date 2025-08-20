@@ -18,17 +18,17 @@ export function AnnouncementCard({
   const canEdit = role === "Professor" || role === "Class Representative";
 
   return (
-    <article className="academic-card p-6">
-      <div className="flex items-start justify-between gap-4 mb-4">
-        <div className="flex items-center gap-3 flex-1 min-w-0">
+    <article className="academic-card p-4 sm:p-6">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4 mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 flex-1 min-w-0">
           {announcement.pinned && (
-            <span className="academic-badge-pinned">Pinned</span>
+            <span className="academic-badge-pinned self-start">Pinned</span>
           )}
-          <h2 className="font-bold text-lg text-foreground leading-tight">
+          <h2 className="font-bold text-lg sm:text-xl text-foreground leading-tight">
             {announcement.title}
           </h2>
         </div>
-        <div className="text-sm text-muted-foreground whitespace-nowrap">
+        <div className="text-sm text-muted-foreground whitespace-nowrap self-start sm:self-auto">
           {formatDate(announcement.createdAt)}
         </div>
       </div>
@@ -52,18 +52,18 @@ export function AnnouncementCard({
       )}
 
       {canEdit && (
-        <div className="flex gap-2 pt-4 border-t border-border">
+        <div className="flex flex-wrap gap-2 pt-4 border-t border-border">
           <AcademicButton
             variant="secondary"
             onClick={() => onTogglePin(announcement.id)}
-            className="text-xs h-8"
+            className="text-xs h-8 flex-1 sm:flex-initial"
           >
             {announcement.pinned ? "Unpin" : "Pin"}
           </AcademicButton>
           <AcademicButton
             variant="secondary"
             onClick={() => onDelete(announcement.id)}
-            className="text-xs h-8 text-destructive hover:text-destructive-foreground hover:bg-destructive"
+            className="text-xs h-8 text-destructive hover:text-destructive-foreground hover:bg-destructive flex-1 sm:flex-initial"
           >
             Delete
           </AcademicButton>

@@ -48,8 +48,8 @@ export function AnnouncementForm({ onSubmit }: AnnouncementFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="academic-card p-6">
-      <h3 className="text-lg font-bold text-foreground mb-6">Create Announcement</h3>
+    <form onSubmit={handleSubmit} className="academic-card p-4 sm:p-6">
+      <h3 className="text-lg font-bold text-foreground mb-4 sm:mb-6">Create Announcement</h3>
       
       <div className="space-y-4">
         <div>
@@ -70,7 +70,7 @@ export function AnnouncementForm({ onSubmit }: AnnouncementFormProps) {
             Details
           </label>
           <textarea
-            className="academic-input w-full min-h-[120px] resize-vertical"
+            className="academic-input w-full min-h-[100px] sm:min-h-[120px] resize-vertical"
             placeholder="Announcement details and information"
             value={body}
             onChange={(e) => setBody(e.target.value)}
@@ -83,8 +83,8 @@ export function AnnouncementForm({ onSubmit }: AnnouncementFormProps) {
             Optional Link
           </label>
           <input
-            className="academic-input w-full"
-            placeholder="https://drive.google.com/... or https://docs.google.com/..."
+            className="academic-input w-full text-sm"
+            placeholder="https://drive.google.com/..."
             value={link}
             onChange={(e) => setLink(e.target.value)}
             type="url"
@@ -104,11 +104,11 @@ export function AnnouncementForm({ onSubmit }: AnnouncementFormProps) {
           </label>
         </div>
 
-        <div className="flex gap-3 pt-4 border-t border-border">
+        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border">
           <AcademicButton 
             type="submit" 
             disabled={isSubmitting || !title.trim() || !body.trim()}
-            className="flex-1"
+            className="flex-1 w-full sm:w-auto"
           >
             {isSubmitting ? "Posting..." : "Post Announcement"}
           </AcademicButton>
@@ -117,6 +117,7 @@ export function AnnouncementForm({ onSubmit }: AnnouncementFormProps) {
             type="button" 
             onClick={handleClear}
             disabled={isSubmitting}
+            className="w-full sm:w-auto"
           >
             Clear
           </AcademicButton>

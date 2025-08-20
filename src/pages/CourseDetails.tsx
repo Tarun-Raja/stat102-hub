@@ -3,19 +3,19 @@ import { MODULES, OBJECTIVES, SCHEDULE } from "@/data/constants";
 
 export function CourseDetailsPage() {
   return (
-    <section className="pt-8">
-      <h1 className="text-3xl font-bold text-foreground mb-8">Course Details</h1>
+    <section className="pt-6 sm:pt-8">
+      <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 sm:mb-8">Course Details</h1>
 
       {/* Course Information Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
         <InfoCard title="Course Title" value="Applied Statistics" />
         <InfoCard title="Course Code" value="STAT102" />
         <InfoCard title="Credits" value="4" />
-        <InfoCard title="Course Category" value="Program Core" />
+        <InfoCard title="Category" value="Program Core" />
         <InfoCard title="L-T-P" value="3-1-0" />
         <InfoCard title="Version" value="1.0" />
-        <InfoCard title="Approval Details" value="ACM" />
-        <InfoCard title="Learning Level" value="1" />
+        <InfoCard title="Approval" value="ACM" />
+        <InfoCard title="Level" value="1" />
       </div>
 
       {/* Course Modules */}
@@ -53,38 +53,40 @@ export function CourseDetailsPage() {
       </div>
 
       {/* Teaching Schedule */}
-      <div className="academic-card p-6 mb-8">
-        <h2 className="text-xl font-bold text-foreground mb-6">Outline Teaching Schedule</h2>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-left py-3 pr-6 font-semibold text-foreground">Unit</th>
-                <th className="text-left py-3 pr-6 font-semibold text-foreground">Topics</th>
-                <th className="text-left py-3 font-semibold text-foreground w-24">Sessions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {SCHEDULE.map((row) => (
-                <tr key={row.unit} className="border-b border-border hover:bg-muted/30">
-                  <td className="py-4 pr-6 align-top font-semibold text-primary">
-                    {row.unit}
-                  </td>
-                  <td className="py-4 pr-6 align-top text-foreground">
-                    {row.topic}
-                  </td>
-                  <td className="py-4 align-top text-center font-medium text-foreground">
-                    {row.sessions}
-                  </td>
+      <div className="academic-card p-4 sm:p-6 mb-6 sm:mb-8">
+        <h2 className="text-lg sm:text-xl font-bold text-foreground mb-4 sm:mb-6">Teaching Schedule</h2>
+        <div className="overflow-x-auto -mx-4 sm:mx-0">
+          <div className="min-w-full px-4 sm:px-0">
+            <table className="w-full min-w-[480px]">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-3 pr-4 sm:pr-6 font-semibold text-foreground text-sm sm:text-base">Unit</th>
+                  <th className="text-left py-3 pr-4 sm:pr-6 font-semibold text-foreground text-sm sm:text-base">Topics</th>
+                  <th className="text-left py-3 font-semibold text-foreground w-20 sm:w-24 text-sm sm:text-base">Sessions</th>
                 </tr>
-              ))}
-              <tr className="border-t-2 border-primary font-bold">
-                <td className="py-4 pr-6 text-primary">Total</td>
-                <td className="py-4 pr-6 text-foreground">—</td>
-                <td className="py-4 text-center text-primary">30</td>
-              </tr>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {SCHEDULE.map((row) => (
+                  <tr key={row.unit} className="border-b border-border hover:bg-muted/30">
+                    <td className="py-3 sm:py-4 pr-4 sm:pr-6 align-top font-semibold text-primary text-sm sm:text-base">
+                      {row.unit}
+                    </td>
+                    <td className="py-3 sm:py-4 pr-4 sm:pr-6 align-top text-foreground text-sm sm:text-base leading-relaxed">
+                      {row.topic}
+                    </td>
+                    <td className="py-3 sm:py-4 align-top text-center font-medium text-foreground text-sm sm:text-base">
+                      {row.sessions}
+                    </td>
+                  </tr>
+                ))}
+                <tr className="border-t-2 border-primary font-bold">
+                  <td className="py-3 sm:py-4 pr-4 sm:pr-6 text-primary text-sm sm:text-base">Total</td>
+                  <td className="py-3 sm:py-4 pr-4 sm:pr-6 text-foreground text-sm sm:text-base">—</td>
+                  <td className="py-3 sm:py-4 text-center text-primary text-sm sm:text-base">30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

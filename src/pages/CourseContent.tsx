@@ -35,12 +35,12 @@ export function CourseContentPage({
 
   return (
     <section className="pt-8">
-      <div className="flex items-end justify-between gap-4 flex-wrap mb-8">
-        <h1 className="text-3xl font-bold text-foreground">Course Content</h1>
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 flex-wrap mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Course Content</h1>
         
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <select
-            className="academic-input min-w-[160px]"
+            className="academic-input w-full sm:min-w-[160px]"
             value={selectedModule}
             onChange={(e) => setSelectedModule(e.target.value)}
           >
@@ -53,7 +53,7 @@ export function CourseContentPage({
           </select>
           
           <input
-            className="academic-input min-w-[200px]"
+            className="academic-input w-full sm:min-w-[200px]"
             placeholder="Search materials..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -62,12 +62,12 @@ export function CourseContentPage({
       </div>
 
       {canEdit && (
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <MaterialForm onSubmit={onAddMaterial} />
         </div>
       )}
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {filteredMaterials.length === 0 && (
           <div className="sm:col-span-2 lg:col-span-3">
             <EmptyState

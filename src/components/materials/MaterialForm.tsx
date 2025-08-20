@@ -59,11 +59,11 @@ export function MaterialForm({ onSubmit }: MaterialFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="academic-card p-6">
-      <h3 className="text-lg font-bold text-foreground mb-6">Add Course Material</h3>
+    <form onSubmit={handleSubmit} className="academic-card p-4 sm:p-6">
+      <h3 className="text-lg font-bold text-foreground mb-4 sm:mb-6">Add Course Material</h3>
       
       <div className="grid gap-4 sm:grid-cols-2">
-        <div>
+        <div className="sm:col-span-2 sm:col-span-1">
           <label className="block text-sm font-medium text-foreground mb-2">
             Title
           </label>
@@ -76,7 +76,7 @@ export function MaterialForm({ onSubmit }: MaterialFormProps) {
           />
         </div>
 
-        <div>
+        <div className="sm:col-span-2 sm:col-span-1">
           <label className="block text-sm font-medium text-foreground mb-2">
             Module
           </label>
@@ -110,18 +110,18 @@ export function MaterialForm({ onSubmit }: MaterialFormProps) {
             File Link or Upload
           </label>
           <input
-            className="academic-input w-full"
-            placeholder="https://drive.google.com/... or https://onedrive.live.com/..."
+            className="academic-input w-full text-sm"
+            placeholder="https://drive.google.com/..."
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             type="url"
           />
           <p className="text-xs text-muted-foreground mt-2">
-            Paste a shareable link from Google Drive, OneDrive, or other cloud storage services.
+            Paste a shareable link from Google Drive, OneDrive, or other cloud storage.
           </p>
         </div>
 
-        <div>
+        <div className="sm:col-span-2 sm:col-span-1">
           <label className="block text-sm font-medium text-foreground mb-2">
             Material Type
           </label>
@@ -138,11 +138,11 @@ export function MaterialForm({ onSubmit }: MaterialFormProps) {
           </select>
         </div>
 
-        <div className="sm:col-span-2 flex gap-3 pt-4 border-t border-border">
+        <div className="sm:col-span-2 flex flex-col sm:flex-row gap-3 pt-4 border-t border-border">
           <AcademicButton 
             type="submit" 
             disabled={isSubmitting || !title.trim() || (!url.trim() && !file)}
-            className="flex-1"
+            className="flex-1 w-full sm:w-auto"
           >
             {isSubmitting ? "Adding..." : "Add Material"}
           </AcademicButton>
@@ -151,6 +151,7 @@ export function MaterialForm({ onSubmit }: MaterialFormProps) {
             type="button" 
             onClick={handleClear}
             disabled={isSubmitting}
+            className="w-full sm:w-auto"
           >
             Clear
           </AcademicButton>
