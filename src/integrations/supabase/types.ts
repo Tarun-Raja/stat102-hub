@@ -14,13 +14,132 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      announcements: {
+        Row: {
+          body: string
+          created_at: string
+          created_by: string | null
+          id: string
+          link: string | null
+          pinned: boolean
+          title: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          link?: string | null
+          pinned?: boolean
+          title: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          link?: string | null
+          pinned?: boolean
+          title?: string
+        }
+        Relationships: []
+      }
+      email_subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          subscribed: boolean
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          subscribed?: boolean
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          subscribed?: boolean
+        }
+        Relationships: []
+      }
+      materials: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          description: string
+          file_name: string
+          file_path: string
+          file_size: number
+          file_type: string
+          id: string
+          module: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          description: string
+          file_name: string
+          file_path: string
+          file_size: number
+          file_type: string
+          id?: string
+          module: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          file_name?: string
+          file_path?: string
+          file_size?: number
+          file_type?: string
+          id?: string
+          module?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_role: {
+        Args: { check_user_id: string }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
