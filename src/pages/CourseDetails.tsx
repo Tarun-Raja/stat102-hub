@@ -90,6 +90,49 @@ export function CourseDetailsPage() {
         </div>
       </div>
 
+      {/* Mode of Assessment */}
+      <div className="academic-card p-4 sm:p-6 mb-6 sm:mb-8">
+        <h2 className="text-lg sm:text-xl font-bold text-foreground mb-4 sm:mb-6">Mode of Assessment</h2>
+        <div className="overflow-x-auto -mx-4 sm:mx-0">
+          <div className="min-w-full px-4 sm:px-0">
+            <table className="w-full min-w-[400px]">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-3 pr-4 sm:pr-6 font-semibold text-foreground text-sm sm:text-base">Assessment Type</th>
+                  <th className="text-left py-3 font-semibold text-foreground w-24 sm:w-32 text-sm sm:text-base">Marks Assigned</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-border hover:bg-muted/30">
+                  <td className="py-3 sm:py-4 pr-4 sm:pr-6 align-top text-foreground text-sm sm:text-base">Mid Term</td>
+                  <td className="py-3 sm:py-4 align-top font-medium text-foreground text-sm sm:text-base">40</td>
+                </tr>
+                <tr className="border-b border-border hover:bg-muted/30">
+                  <td className="py-3 sm:py-4 pr-4 sm:pr-6 align-top text-foreground text-sm sm:text-base">Scribe Notes</td>
+                  <td className="py-3 sm:py-4 align-top font-medium text-foreground text-sm sm:text-base">5</td>
+                </tr>
+                <tr className="border-b border-border hover:bg-muted/30">
+                  <td className="py-3 sm:py-4 pr-4 sm:pr-6 align-top text-foreground text-sm sm:text-base">Assignments</td>
+                  <td className="py-3 sm:py-4 align-top font-medium text-foreground text-sm sm:text-base">10</td>
+                </tr>
+                <tr className="border-b border-border hover:bg-muted/30">
+                  <td className="py-3 sm:py-4 pr-4 sm:pr-6 align-top text-foreground text-sm sm:text-base">Project</td>
+                  <td className="py-3 sm:py-4 align-top font-medium text-foreground text-sm sm:text-base">15</td>
+                </tr>
+                <tr className="border-b border-border hover:bg-muted/30">
+                  <td className="py-3 sm:py-4 pr-4 sm:pr-6 align-top text-foreground text-sm sm:text-base">Semester End Evaluation</td>
+                  <td className="py-3 sm:py-4 align-top font-medium text-foreground text-sm sm:text-base">30</td>
+                </tr>
+                <tr className="border-t-2 border-primary font-bold">
+                  <td className="py-3 sm:py-4 pr-4 sm:pr-6 text-primary text-sm sm:text-base">Total</td>
+                  <td className="py-3 sm:py-4 text-primary text-sm sm:text-base">100</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
       {/* Recommended Resources */}
       <div className="academic-card p-6">
         <h2 className="text-xl font-bold text-foreground mb-6">Recommended Resources</h2>
