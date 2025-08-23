@@ -3,23 +3,15 @@ import { AnnouncementCard } from "@/components/announcements/AnnouncementCard";
 import { AnnouncementForm } from "@/components/announcements/AnnouncementForm";
 import { EmptyState } from "@/components/common/EmptyState";
 import { TimestampPill } from "@/components/common/TimestampPill";
-import { Announcement, UserRole } from "@/types";
+import { UserRole } from "@/types";
+import { useAnnouncements } from "@/hooks/useAnnouncements";
 
 interface AnnouncementsPageProps {
   role: UserRole;
-  announcements: Announcement[];
-  onAddAnnouncement: (announcement: Announcement) => Promise<void> | void;
-  onTogglePin: (id: string) => Promise<void> | void;
-  onDeleteAnnouncement: (id: string) => Promise<void> | void;
 }
 
-export function AnnouncementsPage({
-  role,
-  announcements,
-  onAddAnnouncement,
-  onTogglePin,
-  onDeleteAnnouncement,
-}: AnnouncementsPageProps) {
+export function AnnouncementsPage({ role }: AnnouncementsPageProps) {
+  const { announcements, loading, addAnnouncement, togglePin, deleteAnnouncement } = useAnnouncements();
   const canPost = role === "Professor" || role === "Class Representative";
 
   const sortedAnnouncements = useMemo(() => {
@@ -34,6 +26,14 @@ export function AnnouncementsPage({
       });
   }, [announcements]);
 
+  if (loading) {
+    return (
+      <section className="pt-6 sm:pt-8">
+        <div className="text-center text-muted-foreground">Loading announcements...</div>
+      </section>
+    );
+  }
+
   return (
     <section className="pt-6 sm:pt-8">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
@@ -43,7 +43,7 @@ export function AnnouncementsPage({
 
       {canPost && (
         <div className="mb-6 sm:mb-8">
-          <AnnouncementForm onSubmit={onAddAnnouncement} />
+          <AnnouncementForm onSubmit={addAnnouncement} />
         </div>
       )}
 
@@ -60,8 +60,8 @@ export function AnnouncementsPage({
             key={announcement.id}
             announcement={announcement}
             role={role}
-            onTogglePin={onTogglePin}
-            onDelete={onDeleteAnnouncement}
+            onTogglePin={togglePin}
+            onDelete={deleteAnnouncement}
           />
         ))}
       </div>
