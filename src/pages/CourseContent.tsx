@@ -2,16 +2,22 @@ import { useMemo, useState } from "react";
 import { MaterialCard } from "@/components/materials/MaterialCard";
 import { MaterialForm } from "@/components/materials/MaterialForm";
 import { EmptyState } from "@/components/common/EmptyState";
-import { UserRole } from "@/types";
+import { Material, UserRole } from "@/types";
 import { MODULES } from "@/data/constants";
-import { useMaterials } from "@/hooks/useMaterials";
 
 interface CourseContentPageProps {
   role: UserRole;
+  materials: Material[];
+  onAddMaterial: (material: Material, file?: File) => Promise<void> | void;
+  onDeleteMaterial: (id: string) => Promise<void> | void;
 }
 
-export function CourseContentPage({ role }: CourseContentPageProps) {
-  const { materials, loading, addMaterial, deleteMaterial } = useMaterials();
+export function CourseContentPage({
+  role,
+  materials,
+  onAddMaterial,
+  onDeleteMaterial,
+}: CourseContentPageProps) {
   const canEdit = role === "Professor" || role === "Class Representative";
   const [query, setQuery] = useState("");
   const [selectedModule, setSelectedModule] = useState("All");
@@ -26,14 +32,6 @@ export function CourseContentPage({ role }: CourseContentPageProps) {
       )
       .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }, [materials, query, selectedModule]);
-
-  if (loading) {
-    return (
-      <section className="pt-8">
-        <div className="text-center text-muted-foreground">Loading materials...</div>
-      </section>
-    );
-  }
 
   return (
     <section className="pt-8">
@@ -65,7 +63,7 @@ export function CourseContentPage({ role }: CourseContentPageProps) {
 
       {canEdit && (
         <div className="mb-6 sm:mb-8">
-          <MaterialForm onSubmit={addMaterial} />
+          <MaterialForm onSubmit={onAddMaterial} />
         </div>
       )}
 
@@ -84,7 +82,7 @@ export function CourseContentPage({ role }: CourseContentPageProps) {
             key={material.id}
             material={material}
             role={role}
-            onDelete={deleteMaterial}
+            onDelete={onDeleteMaterial}
           />
         ))}
       </div>
